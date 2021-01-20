@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Contains block_list_override.install.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function block_list_override_install() {
+  $found = FALSE;
+  $config_factory = \Drupal::configFactory();
+  $original = [
+    'block_blacklist.settings',
+  ];
+  $values = [
+    'system_match',
+    'system_prefix',
+    'system_regex',
+    'layout_match',
+    'layout_prefix',
+    'layout_regex',
+  ];
+  foreach ($original as $item) {
+    if ($config = $config_factory->getEditable($item)) {
+      $new_item = str_replace('block_blacklist', 'block_list_override', $item);
+      $new_config = $config_factory->getEditable($new_item);
+      foreach ($values as $value) {
+        $new_config->set($value, $config->get($value));
+      }
+      $new_config->save(TRUE);
+      $found = TRUE;
+    }
+  }
+  if ($found) {
+		  $message = t('Block Blacklist configuration was discovered and is being used to create configuration for Block List Override. You can now uninstall the Block Blacklist module. Please check your settings and confirm they are correct.');
+		  return $message;
+		}
+}

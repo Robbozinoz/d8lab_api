@@ -1,0 +1,28 @@
+block_list_override.settings:
+  type: config_object
+  label: 'Block List Override settings'
+  mapping:
+    system_match:
+      type: string
+      label: "Strings to match for system blocks"
+    system_prefix:
+      type: string
+      label: "Strings to use as prefixes for system blocks"
+    system_regex:
+      type: string
+      label: "Strings to use as regexes for system blocks"
+    system_negate:
+      type: boolean
+      label: "Negate option for system blocks"
+    layout_match:
+      type: string
+      label: "Strings to match for Layout Builder blocks"
+    layout_prefix:
+      type: string
+      label: "Strings to use as prefixes for Layout Builder blocks"
+    layout_regex:
+      type: string
+      label: "Strings to use as regexes for Layout Builder blocks"
+    layout_negate:
+      type: boolean
+      label: "Negate option for Layout Builder blocks"

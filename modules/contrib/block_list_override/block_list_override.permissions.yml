@@ -1,0 +1,4 @@
+access block list override:
+  description: 'Access the Block List Override configuration pages.'
+  title: 'Access Block List Override'
+  restrict access: TRUE

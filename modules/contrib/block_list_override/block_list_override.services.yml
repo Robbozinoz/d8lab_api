@@ -1,0 +1,4 @@
+services:
+  block_list_override.list:
+    class: Drupal\block_list_override\BlockListOverride
+    arguments: ['@entity_type.manager']

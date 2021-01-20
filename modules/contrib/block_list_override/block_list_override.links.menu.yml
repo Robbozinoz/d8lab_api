@@ -1,0 +1,7 @@
+block_list_override.settings:
+  title: 'Block List Override Settings'
+  route_name: block_list_override.settings
+  description: 'Remove blocks from the system.'
+  parent: system.admin_config_system
+  weight: 99
+

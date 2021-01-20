@@ -1,0 +1,15 @@
+block_list_override.settings:
+  route_name: 'block_list_override.settings'
+  base_route: 'block_list_override.settings'
+  title: 'Settings'
+  weight: 0
+block_list_override.system_list:
+  route_name: 'block_list_override.default_controller_list'
+  base_route: 'block_list_override.settings'
+  title: 'System Block List'
+  weight: 5
+block_list_override.layout_list:
+  route_name: 'block_list_override.layout_controller_list'
+  base_route: 'block_list_override.settings'
+  title: 'Layout Builder Block List'
+  weight: 6

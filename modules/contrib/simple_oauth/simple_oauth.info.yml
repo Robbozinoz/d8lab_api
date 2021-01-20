@@ -1,0 +1,14 @@
+name: Simple OAuth & OpenID Connect
+type: module
+description: 'The OAuth 2.0 Authorization Framework'
+core_version_requirement: '^8 || ^9'
+package: Authentication
+configure: oauth2_token.settings
+dependencies:
+  - drupal:serialization
+  - consumers:consumers
+
+# Information added by Drupal.org packaging script on 2020-12-08
+version: '5.0.3'
+project: 'simple_oauth'
+datestamp: 1607468181

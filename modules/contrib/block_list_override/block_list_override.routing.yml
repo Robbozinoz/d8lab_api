@@ -1,0 +1,27 @@
+block_list_override.settings:
+  path: '/admin/config/block_list_override/settings'
+  defaults:
+    _form: '\Drupal\block_list_override\Form\SettingsForm'
+    _title: 'Block List Override'
+  requirements:
+    _permission: 'access block list override'
+  options:
+    _admin_route: TRUE
+block_list_override.default_controller_list:
+  path: '/admin/config/block_list_override/system-list'
+  defaults:
+    _controller: '\Drupal\block_list_override\Controller\DefaultController::list'
+    _title: 'System Block List'
+  requirements:
+    _permission: 'access block list override'
+  options:
+    _admin_route: TRUE
+block_list_override.layout_controller_list:
+  path: '/admin/config/block_list_override/layout-list'
+  defaults:
+    _controller: '\Drupal\block_list_override\Controller\LayoutController::list'
+    _title: 'Layout Builder Block List'
+  requirements:
+    _permission: 'access block list override'
+  options:
+    _admin_route: TRUE
