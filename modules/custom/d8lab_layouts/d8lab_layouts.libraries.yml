@@ -1,0 +1,5 @@
+d8lab_layouts:
+  version: 1.0
+  css:
+    component:
+      css/d8lab_layouts.css: { weight: 10 }

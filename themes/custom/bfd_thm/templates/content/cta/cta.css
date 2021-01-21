@@ -1,0 +1,13 @@
+.cta .node__content {
+  border: 1px solid #0a6eb4;
+  padding: 8px;
+  text-align: center;
+}
+
+.cta .node__content .field--name-field-cta-link a {
+  background: #0a6eb4;
+  color: white;
+  display: block;
+  margin: 10px 0;
+  padding: 4px 8px;
+}

@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ *
+ * This template provides a three column 25%-50%-25% display layout, with
+ * additional areas for the top and the bottom.
+ *
+ * Available variables:
+ * - content: The content for this layout.
+ * - attributes: HTML attributes for the layout <div>.
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'layout',
+    'layout--threecol-25-50-25',
+    'container-fluid',
+  ]
+%}
+{% if content|render|trim %}
+  {{ attach_library('d8lab_layouts/d8lab_layouts') }}
+
+  <div{{ attributes.addClass(classes) }}>
+    <div class="row">
+        <div {{ region_attributes.first.addClass('layout__region', 'layout__region--first', 'layout__region-sidebar', 'region-small', 'col-sm') }} {% if not region_attributes.first %} class="layout__region layout__region--first layout__region-sidebar region-small col-sm" {% endif %}>
+        {% if content.first %}
+            {{ content.first }}
+        {% endif %}
+        </div>
+
+        <div {{ region_attributes.second.addClass('layout__region', 'layout__region--second', 'layout__region-main', 'region-medium', 'col-sm') }} {% if not region_attributes.second %} class="layout__region layout__region--second layout__region-main region-medium col-sm" {% endif %}>
+        {% if content.second %}
+            {{ content.second }}
+        {% endif %}
+        </div>
+
+        <div {{ region_attributes.third.addClass('layout__region', 'layout__region--third', 'layout__region-sidebar', 'region-small', 'col-sm') }} {% if not region_attributes.third %} class="layout__region layout__region--third layout__region-sidebar region-small col-sm" {% endif %}>
+        {% if content.third %}
+            {{ content.third }}
+        {% endif %}
+        </div>
+    </div>
+  </div>
+{% endif %}

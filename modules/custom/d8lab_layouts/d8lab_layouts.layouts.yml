@@ -1,0 +1,15 @@
+d8lab_layouts_threecol_25_50_25:
+  label: 'Three column 25/50/25'
+  path: templates/layouts
+  template: d8lab-layouts--threecol-25-50-25
+  category: 'Columns: 3'
+  default_region: second
+  icon_map:
+    - [first, second, third]
+  regions:
+    first:
+      label: First
+    second:
+      label: Second
+    third:
+      label: Third
