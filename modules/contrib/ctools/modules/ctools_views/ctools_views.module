@@ -61,6 +61,26 @@ function ctools_views_config_schema_info_alter(&$definitions) {
       ],
     ],
   ];
+  $definitions['views_block']['mapping']['arguments'] = [
+    'type' => 'sequence',
+    'label' => 'Contextual filters settings',
+    'sequence' => [
+      [
+        'type' => 'mapping',
+        'label' => 'Contextual filters',
+        'mapping' => [
+          'type' => [
+            'type' => 'string',
+            'label' => 'Plugin id',
+          ],
+          'value' => [
+            'type' => 'string',
+            'label' => 'Contextual filter value',
+          ],
+        ],
+      ],
+    ],
+  ];
   $definitions['views_block']['mapping']['sort'] = [
     'type' => 'sequence',
     'label' => 'Sort settings',
@@ -92,6 +112,10 @@ function ctools_views_config_schema_info_alter(&$definitions) {
   $definitions['views.display.block']['mapping']['allow']['mapping']['sort_fields'] = [
     'type' => 'string',
     'label' => 'Sort fields',
+  ];
+  $definitions['views.display.block']['mapping']['allow']['mapping']['arguments'] = [
+    'type' => 'string',
+    'label' => 'Contextual filters',
   ];
   $definitions['views.display.block']['mapping']['allow']['mapping']['disable_filters'] = [
     'type' => 'string',

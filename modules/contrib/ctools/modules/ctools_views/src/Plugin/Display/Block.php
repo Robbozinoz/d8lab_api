@@ -84,6 +84,7 @@ class Block extends CoreBlock {
       'pager' => $this->t('Pager type'),
       'hide_fields' => $this->t('Hide fields'),
       'sort_fields' => $this->t('Reorder fields'),
+      'arguments' => $this->t('Contextual filters'),
       'disable_filters' => $this->t('Disable filters'),
       'configure_sorts' => $this->t('Configure sorts'),
     ];
@@ -106,6 +107,7 @@ class Block extends CoreBlock {
     $form['allow']['#options']['pager'] = $this->t('Pager type');
     $form['allow']['#options']['hide_fields'] = $this->t('Hide fields');
     $form['allow']['#options']['sort_fields'] = $this->t('Reorder fields');
+    $form['allow']['#options']['arguments'] = $this->t('Contextual filters');
     $form['allow']['#options']['disable_filters'] = $this->t('Disable filters');
     $form['allow']['#options']['configure_sorts'] = $this->t('Configure sorts');
 
@@ -241,6 +243,32 @@ class Block extends CoreBlock {
       }
     }
 
+    // Provide "Configure contextual filters" block settings form.
+    if (!empty($allow_settings['arguments'])) {
+      $items = [];
+      foreach ((array) $this->getOption('arguments') as $argument_name => $item) {
+        $item['value'] = isset($block_configuration["arguments"][$argument_name]['value']) ? $block_configuration["arguments"][$argument_name]['value'] : '';
+        $items[$argument_name] = $item;
+      }
+      $this->setOption('arguments', $items);
+      $arguments = $this->getHandlers('argument');
+      // Add a settings form for each exposed filter to configure or hide it.
+      foreach ($arguments as $argument_name => $plugin) {
+        // Render "Argument values" settings form.
+        if (!empty($allow_settings['arguments'])) {
+          $form['override']['arguments'][$argument_name]['plugin'] = [
+            '#type' => 'value',
+            '#value' => $plugin,
+          ];
+          $form['override']['arguments'][$argument_name]['value'] = [
+            '#type' => 'textfield',
+            '#title' => $argument_name,
+            '#default_value' => !empty($block_configuration['arguments'][$argument_name]['value']) ? $block_configuration['arguments'][$argument_name]['value'] : '',
+          ];
+        }
+      }
+    }
+
     // Provide "Configure filters" / "Disable filters" block settings form.
     if (!empty($allow_settings['disable_filters'])) {
       $items = [];
@@ -340,6 +368,25 @@ class Block extends CoreBlock {
       }
     }
 
+    // Save "Arguments values" settings to block configuration.
+    unset($configuration['arguments']);
+    if (!empty($allow_settings['arguments'])) {
+      if ($arguments = $form_state->getValue(['override', 'arguments'])) {
+        foreach ($arguments as $argument_name => $argument) {
+          /** @var \Drupal\views\Plugin\views\argument\ArgumentPluginBase $plugin */
+          $plugin = $form_state->getValue(['override', 'arguments', $argument_name, 'plugin']);
+          $configuration["arguments"][$argument_name]['type'] = $plugin->getPluginId();
+
+          // Check if we want to disable this filter.
+          if (!empty($allow_settings['arguments'])) {
+            $arg_value = $form_state->getValue(['override', 'arguments', $argument_name, 'value']);
+            $configuration["arguments"][$argument_name]['value'] = $arg_value;
+            continue;
+          }
+        }
+      }
+    }
+
     // Save "Configure filters" / "Disable filters" settings to block
     // configuration.
     unset($configuration['filter']);
@@ -423,6 +470,26 @@ class Block extends CoreBlock {
       }
     }
 
+    // Change contextual filters values based on block configuration.
+    if (!empty($allow_settings['arguments'])) {
+      $arguments = $this->view->getHandlers('argument', $display_id);
+      if (!empty($config['arguments'])) {
+        $args_config_values = array_values($config['arguments']);
+        $args = [];
+        $token = \Drupal::token();
+        $data = $this->getContextAsTokenData();
+
+        for ($i = 0; $i < count($arguments); $i++) {
+          if (!empty($args_config_values[$i]['value'])) {
+            $args[] = $token->replace($args_config_values[$i]['value'], $data);
+          }
+        }
+        if (!empty($args)) {
+          $this->view->setArguments($args);
+        }
+      }
+    }
+
     // Change filters output based on block configuration.
     if (!empty($allow_settings['disable_filters'])) {
       $filters = $this->view->getHandlers('filter', $display_id);
@@ -445,6 +512,13 @@ class Block extends CoreBlock {
           $this->view->setHandler($display_id, 'sort', $sort_name, $sort);
         }
       }
+    }
+
+    // Force the view to build to prevent
+    // Drupal\views\Plugin\Block\ViewsBlock::build()
+    // from overwriting the arguments.
+    if (!empty($args)) {
+      $this->view->build();
     }
   }
 
@@ -487,6 +561,33 @@ class Block extends CoreBlock {
       $view->exposed_widgets['#action'] = $this->request->getRequestUri();
     }
     return parent::elementPreRender($element);
+  }
+
+  /**
+   * Fetches token data from context.
+   *
+   * @return array
+   *   An array of entities from context.
+   */
+  protected function getContextAsTokenData() {
+    $data = [];
+    /** @var ContextRepositoryInterface $context_service */
+    $context_service = \Drupal::service('context.repository');
+    $container_ids = array_keys($context_service->getAvailableContexts());
+    foreach ($context_service->getRuntimeContexts($container_ids) as $name => $context) {
+      // Only continue for entity contexts.
+      if (strpos($context->getContextDefinition()->getDataType(), 'entity:') === 0) {
+        $token_type = substr($context->getContextDefinition()->getDataType(), 7);
+        if ($token_type == 'taxonomy_term') {
+          $token_type = 'term';
+        }
+
+        if ($context->hasContextValue()) {
+          $data[$token_type] = $context->getContextValue();
+        }
+      }
+    }
+    return $data;
   }
 
   /**
