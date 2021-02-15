@@ -1,0 +1,15 @@
+d8lab_dynamic:
+  version: 1.0
+  css:
+    component:
+      css/d8lab_dynamic.css: { weight: 10 }
+tabs:
+  version: VERSION
+  js:
+    js/tabs.js: {}
+  css:
+    component:
+      css/tabs.css: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

@@ -3,3 +3,13 @@ d8lab_layouts:
   css:
     component:
       css/d8lab_layouts.css: { weight: 10 }
+tabs:
+  version: VERSION
+  js:
+    js/tabs.js: {}
+  css:
+    component:
+      css/tabs.css: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

@@ -85,5 +85,30 @@
         }
       }
     }
+
+    // Mailchimp
+    [id*="mailchimp-signup-subscribe-block"] {
+      [id*="mailchimp-newsletter"] {
+        max-width   : 175px;
+        float       : left;
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////// BREAKPOINT LARGE UP
+@include media-breakpoint-up(lg) {
+  //////////////////////////////////////////////////////////////////////////////
+  // [ COMMON ]
+
+  // Mailchimp
+  [id*="mailchimp-signup-subscribe-block"] {
+    [id*="mailchimp-newsletter"] {
+      max-width: 350px;
+    }
+    .form-actions {
+      margin-top: 3px;
+    }
   }
 }

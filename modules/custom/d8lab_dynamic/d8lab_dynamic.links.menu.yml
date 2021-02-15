@@ -1,0 +1,6 @@
+d8lab_dynamic.form:
+  title: 'Dynamic Layout configuration'
+  parent: d8lab_dynamic.form
+  route_name: d8lab_dynamic.form
+  weight: 100
+  menu_name: system

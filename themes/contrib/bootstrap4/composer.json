@@ -16,6 +16,6 @@
     "issues": "https://www.drupal.org/project/issues/bootstrap4"
   },
   "require": {
-    "symfony/filesystem": "^3|^4"
+    "symfony/filesystem": "^3|^4|^5"
   }
 }

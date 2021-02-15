@@ -24,7 +24,7 @@ regions:
   footer_sub_right: 'Footer sub - right box'
   modal_container: 'Modal box container'
 
-# Information added by Drupal.org packaging script on 2020-06-23
-version: '8.x-2.54'
+# Information added by Drupal.org packaging script on 2021-01-30
+version: '8.x-2.61'
 project: 'bfd'
-datestamp: 1592911116
+datestamp: 1611999691

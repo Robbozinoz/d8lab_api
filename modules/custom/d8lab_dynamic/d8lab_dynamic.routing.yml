@@ -1,0 +1,7 @@
+d8lab_dynamic.form:
+  path: '/admin/structure/d8lab-dynamic'
+  defaults:
+    _form: '\Drupal\d8lab_dynamic\Form\LayoutConfigurationForm'
+    _title: 'Dynamic layout configuration form'
+  requirements:
+    _permission: 'administer site configuration'

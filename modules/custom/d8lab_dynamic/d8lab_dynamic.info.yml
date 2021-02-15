@@ -1,0 +1,5 @@
+name: d8lab Dynamic Module
+description: A test Dynamic module for the d8lab site
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9

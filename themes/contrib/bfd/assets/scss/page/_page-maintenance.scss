@@ -1,0 +1,104 @@
+/* ---------------------------------------------------------------------------*/
+/* MOBILE FIRST - page/page-maintenance.scss                                      */
+/* ---------------------------------------------------------------------------*/
+@charset "UTF-8";
+////////////////////////////////////////////////////// BREAKPOINT EXTRA SMALL UP
+@include media-breakpoint-up(xs) {
+  //////////////////////////////////////////////////////////////////////////////
+  // [ COMMON ]
+  .maintenance-page {
+    #page-maintenance {
+      display        : flex;
+      height         : 100vh;
+      justify-content: center;
+    }
+    #page-maintenance .wrapper {
+      display        : flex;
+      flex-direction : column;
+      align-items    : center;
+      justify-content: center;
+      height         : 100%;
+    }
+    #header-maintenance {
+      width  : 100%;
+      display: block;
+    }
+    .wrapper-logo {
+      width     : 100%;
+      text-align: center;
+    }
+    .wrapper-logo a {
+      display: inline-block;
+    }
+    .site-logo {
+      width        : 75px;
+      margin-right : 0;
+      float        : left;
+      margin-bottom: 1rem;
+    }
+    .site-name {
+      font-size : 1.4rem;
+      text-align: center;
+    }
+    .site-slogan {
+      font-weight: 400;
+      font-size  : 1.25rem;
+      text-align : center;
+    }
+    .site-message {
+      margin-top      : 2rem;
+      background-color: $gray-100;
+      border-radius   : $border-radius;
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////// BREAKPOINT SMALL UP
+@include media-breakpoint-up(sm) {
+  //////////////////////////////////////////////////////////////////////////////
+  // [ COMMON ]
+  .maintenance-page {
+
+    .site-message {
+      text-align: justify;
+
+    }
+    .site-slogan {
+      text-align: left;
+      text-align: justify;
+    }
+    .wrapper-logo {
+      width: auto;
+    }
+    .wrapper-logo a {
+      display: block;
+    }
+    .site-name {
+      text-align: left;
+      font-size : 1.6rem;
+    }
+    .site-logo {
+      margin-right : 1.5rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////// BREAKPOINT MEDIUM UP
+@include media-breakpoint-up(md) {
+  //////////////////////////////////////////////////////////////////////////////
+  // [ COMMON ]
+
+  .maintenance-page {
+
+    .site-slogan {
+      min-width: 600px;
+      max-width: 600px;
+    }
+    .site-message {
+      min-width: 600px;
+      max-width: 600px;
+    }
+
+  }
+}

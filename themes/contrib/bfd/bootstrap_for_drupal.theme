@@ -138,3 +138,7 @@ function bootstrap_for_drupal_form_system_theme_settings_alter(&$form, FormState
     ];
   }
 }
+
+if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+  unset($javascript['/sites/ms8.bfd.dev/themes/contrib/bfd/assets/js/popperrr.min.js']);
+}

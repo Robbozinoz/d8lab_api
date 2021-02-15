@@ -17222,6 +17222,20 @@ footer .region-footer-left .block ul li:before {
   margin-left: -2.5rem;
 }
 
+footer [id*="mailchimp-signup-subscribe-block"] [id*="mailchimp-newsletter"] {
+  max-width: 175px;
+  float: left;
+  margin-right: 1rem;
+}
+
+@media (min-width: 992px) {
+  [id*="mailchimp-signup-subscribe-block"] [id*="mailchimp-newsletter"] {
+    max-width: 350px;
+}
+  [id*="mailchimp-signup-subscribe-block"] .form-actions {
+    margin-top: 3px;
+} }
+
 /* ---------------------------------------------------------------------------*/
 /* MOBILE FIRST - layout/_footer-sub.scss                                     */
 /* ---------------------------------------------------------------------------*/
@@ -17321,6 +17335,7 @@ footer .region-footer-left .block ul li:before {
 } }
 
 #header-menu {
+  overflow: hidden;
   -webkit-box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.3);
 }
@@ -17347,6 +17362,11 @@ footer .region-footer-left .block ul li:before {
   min-width: 40px;
   padding: 0;
 }
+
+@media (min-width: 576px) {
+  #header-menu {
+    overflow: visible;
+} }
 
 @media (min-width: 768px) and (orientation: landscape) {
   #header-menu.sticky-top {
@@ -18481,6 +18501,107 @@ ol.breadcrumb .breadcrumb-item {
   background-color: #e4606d;
   padding: .1rem .4rem;
 }
+
+/* ---------------------------------------------------------------------------*/
+/* MOBILE FIRST - page/page-maintenance.scss                                      */
+/* ---------------------------------------------------------------------------*/
+.maintenance-page #page-maintenance {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.maintenance-page #page-maintenance .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.maintenance-page #header-maintenance {
+  width: 100%;
+  display: block;
+}
+
+.maintenance-page .wrapper-logo {
+  width: 100%;
+  text-align: center;
+}
+
+.maintenance-page .wrapper-logo a {
+  display: inline-block;
+}
+
+.maintenance-page .site-logo {
+  width: 75px;
+  margin-right: 0;
+  float: left;
+  margin-bottom: 1rem;
+}
+
+.maintenance-page .site-name {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.maintenance-page .site-slogan {
+  font-weight: 400;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.maintenance-page .site-message {
+  margin-top: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 0.2rem;
+}
+
+@media (min-width: 576px) {
+  .maintenance-page .site-message {
+    text-align: justify;
+}
+  .maintenance-page .site-slogan {
+    text-align: left;
+    text-align: justify;
+}
+  .maintenance-page .wrapper-logo {
+    width: auto;
+}
+  .maintenance-page .wrapper-logo a {
+    display: block;
+}
+  .maintenance-page .site-name {
+    text-align: left;
+    font-size: 1.6rem;
+}
+  .maintenance-page .site-logo {
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+} }
+
+@media (min-width: 768px) {
+  .maintenance-page .site-slogan {
+    min-width: 600px;
+    max-width: 600px;
+}
+  .maintenance-page .site-message {
+    min-width: 600px;
+    max-width: 600px;
+} }
 
 /* ---------------------------------------------------------------------------*/
 /* MOBILE FIRST - base/print/_print.scss                                             */

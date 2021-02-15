@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a three column layout.
+ */
+#}
+
+{#
+/**
+ * The settings variable is provided by the layout plugin, contains all
+ * configuration options for the plugin including the ones added through our
+ * custom code.
+ *
+ * The following code uses the column_width configuration to alter the set of
+ * classes used in the template and thereby alters the display.
+ */
+#}
+{% if settings.column_width == 'equal_columns' %}
+  {%
+  set classes = [
+    'layout',
+    'layout--equal',
+    'container-fluid',
+  ]
+%}
+{% elseif settings.column_width == '25_50_25' %}
+  {%
+    set classes = [
+      'layout',
+      'layout--threecol-25-50-25',
+      'container-fluid',
+    ]
+  %}
+{% else %}
+  {%
+    set classes = [
+      'layout',
+      'layout--threecol-50-25-25',
+      'container-fluid',
+    ]
+  %}
+{% endif %}
+{% if content|render|trim %}
+  {{ attach_library('d8lab_layouts/d8lab_layouts') }}
+  {{ attach_library('d8lab_layouts/tabs') }}
+  <div class=="container-fluid">
+    <div class="tab-triggers">
+      <div class="tab" id="tab-1">Tab 1</div>
+      <div class="tab" id="tab-2">Tab 2</div>
+      <div class="tab" id="tab-3">Tab 3</div>
+    </div>
+  </div>
+
+  <div{{ attributes.addClass(classes) }}>
+    <div {{ region_attributes.first.addClass('layout__region', 'layout__region--first', 'layout__region-sidebar', 'region-small', 'tab-1', 'tab-content', 'open') }} {% if not region_attributes.first %} class="layout__region layout__region--first layout__region-sidebar region-small" {% endif %}>
+      {% if content.first %}
+          {{ content.first }}
+      {% endif %}
+    </div>
+
+    <div {{ region_attributes.second.addClass('layout__region', 'layout__region--second', 'layout__region-main', 'region-medium', 'tab-2', 'tab-content', 'closed') }} {% if not region_attributes.second %} class="layout__region layout__region--second layout__region-main region-medium" {% endif %}>
+      {% if content.second %}
+          {{ content.second }}
+      {% endif %}
+    </div>
+
+    <div {{ region_attributes.third.addClass('layout__region', 'layout__region--third', 'layout__region-sidebar', 'region-small', 'tab-3', 'tab-content', 'closed') }} {% if not region_attributes.third %} class="layout__region layout__region--third layout__region-sidebar" {% endif %}>
+      {% if content.third %}
+          {{ content.third }}
+      {% endif %}
+    </div>
+
+  </div>
+
+{% endif %}
