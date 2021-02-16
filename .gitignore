@@ -50,3 +50,5 @@
 
 #Ignore dist fiel whilst in React dev mode
 /themes/react_thm/js/dist_dev
+/themes/react_thm/node_modules
+/modules/custom/react_app_block/node_modules
