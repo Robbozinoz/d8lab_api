@@ -47,3 +47,6 @@
 /robots.txt
 /update.php
 /web.config
+
+#Ignore dist fiel whilst in React dev mode
+/themes/react_thm/js/dist_dev
