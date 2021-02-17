@@ -1,11 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { hot } from 'react-hot-loader/root';
 
 /* Import Components */
-import DrupalProjectStats from './components/DrupalProjectStats';
+import NodeReadWrite from "./components/NodeReadWrite";
 
-const Main = () => (
-  <DrupalProjectStats projectName="drupal" />
-);
+const Main = hot(() => (
+  <NodeReadWrite/>
+));
 
 ReactDOM.render(<Main/>, document.getElementById('react-app'));
