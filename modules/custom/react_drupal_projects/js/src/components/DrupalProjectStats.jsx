@@ -24,7 +24,7 @@ const DrupalProjectStats = ({ projectName }) => {
           <div>
             Choose a project:
             <br/>
-            <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-info" onClick={() => setProject('drupal')}>Drupal core</button>
               <button type="button" class="btn btn-success" onClick={() => setProject('ctools')}>Ctools</button>
               <button type="button" class="btn btn-danger" onClick={() => setProject('paragraphs')}>Paragraphs</button>
