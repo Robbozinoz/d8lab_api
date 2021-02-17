@@ -7,3 +7,11 @@ react_app_dev:
   version: VERSION
   js:
     js/dist_dev/main.min.js: {minified: true}
+
+friendly_greeting:
+  version: 1.0
+  license: GPL
+  js:
+    js/greeting/friendly-greeting.js: { }
+  dependencies:
+    - core/drupalSettings
