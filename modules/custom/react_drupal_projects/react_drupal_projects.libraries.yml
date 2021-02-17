@@ -1,0 +1,3 @@
+react-projects:
+  js:
+    js/dist/main.min.js: {minified: true}
