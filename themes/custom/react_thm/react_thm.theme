@@ -3,20 +3,10 @@
 /**
  * Implements hook_page_attachments_alter().
  */
-function react_thm_page_attachments_alter(array &$attachments, $page) {
+function react_thm_page_attachments_alter(array &$attachments) {
   // Use the dev library if we're developing locally.
   if (in_array('react_thm/react_app', $attachments['#attached']['library']) && file_exists(__DIR__ . '/js/dist_dev')) {
     $index = array_search('react_thm/react_app', $attachments['#attached']['library']);
     $attachments['#attached']['library'][$index] = 'react_thm/react_app_dev';
-  }
-
-  // We're going to pass along the user's display name to our front-end code.
-  $account = \Drupal::currentUser();
-  if ($account->isAuthenticated()) {
-    // First we attach our asset library to the page.
-    $page['#attached']['library'][] = 'react_thm/friendly_greeting';
-    // Then we pass along our dynamic value.
-    // This will then be available in our JavaScript as drupalSettings.friendly.name.
-    $page['#attached']['drupalSettings']['friendly']['name'] = $account->getDisplayName();
   }
 }

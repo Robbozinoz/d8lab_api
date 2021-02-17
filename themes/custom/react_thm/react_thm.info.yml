@@ -5,4 +5,3 @@ core: 8.x
 base theme: bartik
 libraries:
   - react_thm/react_app
-  - react_thm/friendly_greeting
