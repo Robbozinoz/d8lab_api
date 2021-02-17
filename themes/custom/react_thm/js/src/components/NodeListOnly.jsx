@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from "react";
 
-const NodeItem = () => (
-  <div>Node item placeholder</div>
+const NodeItem = ({drupal_internal__nid, title}) => (
+  <div>
+      <a href={`/node/${drupal_internal__nid}`}>{title}</a>
+  </div>
 );
 
 const NoData = () => (
   <div>No articles found.</div>
 );
+
+function isValidData(data) {
+  if (data === null) {
+    return false;
+  }
+  if (data.data === undefined ||
+    data.data === null ||
+    data.data.length === 0 ) {
+    return false;
+  }
+  return true;
+}
 
 const NodeListOnly = () => {
   const [content, setContent] = useState(false);
@@ -22,14 +36,21 @@ const NodeListOnly = () => {
 
     fetch(url, {headers})
       .then((response) => response.json())
-      .then((data) => setContent(data.data))
+      .then((data) => {
+        if (isValidData(data)) {
+          setContent(data.data)
+        }
+      })
       .catch(err => console.log('There was an error accessing the API', err));
   }, []);
 
   return (
     <div>
       <h2>Site content</h2>
-      {content ? (<NodeItem />) : (<NoData />)}
+      {content ? (content.map((item) => <NodeItem key={item.id} {...item.attributes}/>)
+      ) : (
+          <NoData />
+      )}
     </div>
   );
 };
