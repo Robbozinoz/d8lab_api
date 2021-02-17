@@ -24,6 +24,7 @@ function isValidData(data) {
 
 const NodeListOnly = () => {
   const [content, setContent] = useState(false);
+  const [filter, setFilter] = useState(null);
 
   //API Call with sparse fieldsets
   useEffect(() => {
@@ -47,7 +48,28 @@ const NodeListOnly = () => {
   return (
     <div>
       <h2>Site content</h2>
-      {content ? (content.map((item) => <NodeItem key={item.id} {...item.attributes}/>)
+      {content ? (
+        <>
+          <label htmlFor="filter">Type to Filter:</label>
+          <input  
+            type='text'
+            name='filter'
+            placeholder='Start typing...'
+            onChange={(event => setFilter(event.target.value.toLowerCase()))}
+          />
+          <hr/>
+          {
+            content.filter((item) => {
+              if (!filter) {
+                return item;
+              }
+
+              if (filter && (item.attributes.title.toLowerCase().includes(filter) || item.attributes.body.value.toLowerCase().includes(filter))) {
+                return item;
+              }
+            }).map((item) => <NodeItem key={item.id} {...item.attributes}/>)
+          }
+        </>
       ) : (
           <NoData />
       )}
