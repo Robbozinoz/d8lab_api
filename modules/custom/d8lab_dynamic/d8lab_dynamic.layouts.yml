@@ -1,5 +1,5 @@
 d8lab_dynamic_threecol_25_50_25:
-  label: 'Dynamic Three column 25/50/25'
+  label: 'D8Lab Dyn 3 Col'
   path: templates/layouts
   class: '\Drupal\d8lab_dynamic\Layout\ThreeColumnsLayoutClass'
   template: d8lab-dynamic--threecol-25-50-25

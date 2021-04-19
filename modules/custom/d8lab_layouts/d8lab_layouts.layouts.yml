@@ -1,5 +1,5 @@
 d8lab_layouts_threecol_25_50_25:
-  label: 'Updated Three column 25/50/25'
+  label: 'D8Lab 3Col 25/50/25'
   path: templates/layouts
   class: '\Drupal\d8lab_layouts\Layout\ThreeColumnsLayoutClass'
   template: d8lab-layouts--threecol-25-50-25

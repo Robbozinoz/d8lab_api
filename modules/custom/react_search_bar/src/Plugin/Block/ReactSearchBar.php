@@ -9,7 +9,7 @@ use Drupal\Core\Block\BlockBase;
  *
  * @Block(
  *  id = "react_search_bar",
- *  admin_label = @Translation("React Search bar"),
+ *  admin_label = @Translation("React Search Bar"),
  * )
  */
 class ReactSearchBar extends BlockBase {

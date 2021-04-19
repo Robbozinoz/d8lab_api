@@ -1,0 +1,6 @@
+services:
+  bddbs4_layouts.event_subscriber:
+    class: Drupal\bddbs4_layouts\EventSubscriber\Bddbs4LayoutsSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

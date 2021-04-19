@@ -22,7 +22,7 @@ const DrupalProjectStats = ({ projectName }) => {
       return (
         <div>
           <div>
-            Choose a project:
+            Choose a project from the Theme:
             <br/>
             <button onClick={() => setProject('drupal')}>Drupal core</button>
             <button onClick={() => setProject('ctools')}>ctools</button>

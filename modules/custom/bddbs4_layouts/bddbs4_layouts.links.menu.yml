@@ -1,0 +1,6 @@
+bddbs4_layouts.settings_form:
+  title: bddbs4_layouts
+  description: Configure bddbs4_layouts.
+  parent: system.admin_config_system
+  route_name: bddbs4_layouts.settings_form
+  weight: 10

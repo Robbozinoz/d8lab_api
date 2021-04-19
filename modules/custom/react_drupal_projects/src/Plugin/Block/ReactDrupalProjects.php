@@ -9,7 +9,7 @@ use Drupal\Core\Block\BlockBase;
  *
  * @Block(
  *  id = "react_drupal_projects",
- *  admin_label = @Translation("React Project block"),
+ *  admin_label = @Translation("React Project Block"),
  * )
  */
 class ReactDrupalProjects extends BlockBase {

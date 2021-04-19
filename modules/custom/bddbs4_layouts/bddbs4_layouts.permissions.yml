@@ -1,0 +1,4 @@
+administer bddbs4_layouts configuration:
+  title: 'Administer bddbs4_layouts configuration'
+  description: 'Optional description.'
+  restrict access: true

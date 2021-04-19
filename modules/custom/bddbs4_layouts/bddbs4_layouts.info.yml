@@ -1,0 +1,6 @@
+name: bddbs4_layouts
+type: module
+description: Bootstrap Layouts module
+package: John Robertson
+core: 8.x
+core_version_requirement: ^8 || ^9

@@ -1,0 +1,15 @@
+bddbs4_layouts.example:
+  path: '/bddbs4-layouts/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\bddbs4_layouts\Controller\Bddbs4LayoutsController::build'
+  requirements:
+    _permission: 'access content'
+
+bddbs4_layouts.settings_form:
+  path: '/admin/config/system/bddbs4-layouts'
+  defaults:
+    _title: 'bddbs4_layouts settings'
+    _form: 'Drupal\bddbs4_layouts\Form\SettingsForm'
+  requirements:
+    _permission: 'administer bddbs4_layouts configuration'

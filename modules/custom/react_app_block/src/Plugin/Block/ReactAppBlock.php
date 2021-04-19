@@ -9,7 +9,7 @@ use Drupal\Core\Block\BlockBase;
  *
  * @Block(
  *  id = "react_app_block_block",
- *  admin_label = @Translation("React list block"),
+ *  admin_label = @Translation("React List block"),
  * )
  */
 class ReactAppBlock extends BlockBase {
