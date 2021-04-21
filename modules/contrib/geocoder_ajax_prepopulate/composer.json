@@ -1,0 +1,9 @@
+{
+  "name": "drupal/geocoder_ajax_prepopulate",
+  "type": "drupal-module",
+  "description": "Allows an editor to see the geocoding result and to correct it, or even to give the coordinates directly, without using the geocoding",
+  "license": "GPL-2.0-or-later",
+  "require-dev": {
+    "vijaycs85/drupal-quality-checker": "^1.3"
+  }
+}

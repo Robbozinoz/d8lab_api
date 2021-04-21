@@ -71,6 +71,49 @@ class JsonApiDefaultsFunctionalTest extends JsonApiExtrasFunctionalTestBase {
     ]);
     $parsed_response = Json::decode($response);
     $this->assertArrayNotHasKey('included', $parsed_response);
+
+    // 4. Using the default sorting check the order.
+    // Unset filters of resource config in this test as those limit the results.
+    $this->setResouceConfigValue(['default_filter' => []]);
+    $this->nodes[0]->setTitle('a');
+    $this->nodes[0]->save();
+
+    $this->nodes[1]->setTitle('b');
+    $this->nodes[1]->save();
+
+    $this->nodes[2]->setTitle('c');
+    $this->nodes[2]->save();
+
+    $this->nodes[3]->setTitle('d');
+    $this->nodes[3]->save();
+
+    $response = $this->drupalGet('/api/articles');
+    $parsed_response = Json::decode($response);
+
+    // Check if order is as expected.
+    $this->assertEquals('d', $parsed_response['data'][0]['attributes']['title']);
+    $this->assertEquals('c', $parsed_response['data'][1]['attributes']['title']);
+    $this->assertEquals('b', $parsed_response['data'][2]['attributes']['title']);
+    $this->assertEquals('a', $parsed_response['data'][3]['attributes']['title']);
+
+    // 5. Override default sorting with explicit sorting.
+    $response = $this->drupalGet('/api/articles', [
+      'query' => [
+        'sort' => [
+          'title' => [
+            'path' => 'title',
+            'direction' => 'ASC',
+          ],
+        ],
+      ],
+    ]);
+    $parsed_response = Json::decode($response);
+
+    // Check if order changed as expected.
+    $this->assertEquals('a', $parsed_response['data'][0]['attributes']['title']);
+    $this->assertEquals('b', $parsed_response['data'][1]['attributes']['title']);
+    $this->assertEquals('c', $parsed_response['data'][2]['attributes']['title']);
+    $this->assertEquals('d', $parsed_response['data'][3]['attributes']['title']);
   }
 
   /**
@@ -193,6 +236,10 @@ class JsonApiDefaultsFunctionalTest extends JsonApiExtrasFunctionalTestBase {
           'default_filter' => [
             'filter:nidFilter#condition#path' => 'internalId',
             'filter:nidFilter#condition#value' => 3,
+          ],
+          'default_sorting' => [
+            'sort:title#path' => 'title',
+            'sort:title#direction' => 'DESC',
           ],
           // TODO: Change this to 'tags.vid'.
           'default_include' => ['tags'],

@@ -1,0 +1,7 @@
+th_store_locator.origin_location.:
+  path: '/origin_location'
+  defaults:
+    _form:  '\Drupal\th_store_locator\Form\OriginLocationForm'
+    _title: 'Store Locator Form'
+  requirements:
+    _access: 'TRUE'

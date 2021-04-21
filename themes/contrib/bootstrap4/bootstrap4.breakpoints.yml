@@ -53,7 +53,7 @@ bootstrap4.screen.lg-min:
     - 2x
 
 bootstrap4.screen.lg-max:
-  label: lg-max
+  label: md-max
   mediaQuery: '(max-width: 1199.98px)'
   weight: 7
   group: screen
@@ -62,7 +62,7 @@ bootstrap4.screen.lg-max:
     - 2x
 
 bootstrap4.screen.xl-min:
-  label: xl-min
+  label: lg-min
   mediaQuery: '(min-width: 1200px)'
   weight: 8
   group: screen

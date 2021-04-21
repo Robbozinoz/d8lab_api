@@ -46,7 +46,15 @@ class EntityResource extends JsonApiEntityResourse {
       []
     );
 
+    $default_sorting_input = $resource_config->getThirdPartySetting(
+      'jsonapi_defaults',
+      'default_sorting',
+      []
+    );
+
     $default_filter = [];
+    $default_sorting = [];
+
     foreach ($default_filter_input as $key => $value) {
       if (substr($key, 0, 6) === 'filter') {
         $key = str_replace('filter:', '', $key);
@@ -54,13 +62,31 @@ class EntityResource extends JsonApiEntityResourse {
         $this->setFilterValue($default_filter, $key, $value);
       }
     }
+
+    foreach ($default_sorting_input as $key => $value) {
+      if (substr($key, 0, 4) === 'sort') {
+        $key = str_replace('sort:', '', $key);
+        // TODO: Replace this with use of the NestedArray utility.
+        $this->setFilterValue($default_sorting, $key, $value);
+      }
+    }
+
     $filters = array_merge(
       $default_filter,
       $request->query->get('filter', [])
     );
 
+    $sorting = array_merge(
+      $default_sorting,
+      $request->query->get('sort', [])
+    );
+
     if (!empty($filters)) {
       $request->query->set('filter', $filters);
+    }
+
+    if (!empty($sorting)) {
+      $request->query->set('sort', $sorting);
     }
 
     // Implements overridden page limits.

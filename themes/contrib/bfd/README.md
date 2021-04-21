@@ -188,27 +188,35 @@ DISTRIBUTION
 
 [![Demo](https://store.octogone.dev/sites/default/files/image/content/discover-bfd-bd.png)][14]
 
-`Bootstrap for Drupal - BASE distribution` is designed to ease the media publication of video, audio, image, social media, document and the media management with a specific media library for every type of content. As well as the integration of Bootstrap dynamic presentation.
+Bootstrap for Drupal - BASE distribution is designed to ease the
+**media publication** - video, audio, image, social media, document -
+and the **media management** with a specific media library browser for
+each media type. It is also designed to ease the integration of 
+**Bootstrap dynamic presentation**.
 
 ## Components
 
-Components are build with [paragraph][15] and [entity browser][16] and the media managed in the media library. All those components are published with paragraph forms thus no HTML knowledge is required.
+Components are build with [paragraph][15] and [entity browser][16] thus no HTML
+knowledge is required to publish them. All Medias are managed in the media
+library.
 
-**Media components**: audio player, video player, gallery (Bootstrap), social media (Facebook, Instagram, Twitter), content list (node), document list, link list.
+**Media components**: HTML5 audio player, HTML5 video player, gallery
+(Custom Bootstrap), social medias (Facebook, Instagram, Twitter), contents
+(node/BS card), documents, links.
 
-**Bootstrap components**: tabs, carousel, accordion, table, modal, popover, tooltips.
+**Bootstrap components**: tabs, carousel, accordion, table, modal.
+Popover and tooltips are HTML templates in CKEditor.
 
 ## Other features
-
-Dynamic scrollspy block, scroll up/down button, Bootstrap [GDPR][13] , HTML elements page. Example content for every components.
+Custom scrollspy block, custom scroll up/down button, Bootstrap [GDPR][13],
+ HTML elements page. Examples content for every components.
 
 ## HTML5 player with playlist
 
-Playlist is auto-generated and media can have a description. Thumbnails
-are auto-generated for remote and local video. You can mix local and
-emote video in the same playlist. With the keyboard you can control
-volume and navigation. Several players can be integrated in the same 
-page. Bulk upload.
+Playlist with media description. Thumbnails for remote and local video - not
+ all types. You can mix local and remote video in one video player. Keyboard
+  control of volume and navigation. Several players can be integrated in the
+   same page. Bulk upload.
 
 **Video codecs/providers** : Youtube, Dailymotion, vimeo, mp4, ogg, webm.
 

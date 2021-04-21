@@ -41,11 +41,14 @@ function _jsonapi_defaults_form_alter(array &$form, FormStateInterface $form_sta
     'jsonapi_defaults',
     'default_include'
   );
+  $sorting = _jsonapi_defaults_convert_value(
+    $config_resource->getThirdPartySetting('jsonapi_defaults', 'default_sorting')
+  );
 
   $form['bundle_wrapper']['fields_wrapper']['defaults'] = [
     '#type' => 'details',
     '#title' => t('Collection'),
-    '#open' => $includes || $filters,
+    '#open' => $includes || $filters || $sorting,
     '#description' => t('Sets resource default parameters.'),
     '#states' => [
       'visible' => [
@@ -69,6 +72,16 @@ function _jsonapi_defaults_form_alter(array &$form, FormStateInterface $form_sta
         filter[titleFilter][condition][path]=title<br />
         filter[titleFilter][condition][value]=Comis Commodo Ymo<br />
         If a request contains an "filter" query string parameter those filters will be added to the defaults.'),
+  ];
+
+  $form['bundle_wrapper']['fields_wrapper']['defaults']['default_sorting'] = [
+    '#type' => 'textarea',
+    '#title' => 'Default sorting list',
+    '#default_value' => $sorting,
+    '#description' => t('Enter one sort per line, in the format key=value. For example:<br />
+        sort[titleSort][path]=created<br />
+        sort[titleSort][direction]=DESC<br />
+        If a request contains an "sort" query string parameter those sorting will be added to the defaults.'),
   ];
 
   $form['bundle_wrapper']['fields_wrapper']['defaults']['page_limit'] = [
@@ -96,6 +109,14 @@ function jsonapi_defaults_form_jsonapi_resource_config_form_builder($entity_type
   }
   else {
     $config_resource->unsetThirdPartySetting('jsonapi_defaults', 'default_filter');
+  }
+
+  if ($raw_value = $form_state->getValue('default_sorting')) {
+    $value = _jsonapi_defaults_convert_rawvalue($raw_value);
+    $config_resource->setThirdPartySetting('jsonapi_defaults', 'default_sorting', $value);
+  }
+  else {
+    $config_resource->unsetThirdPartySetting('jsonapi_defaults', 'default_sorting');
   }
 
   if ($raw_value = $form_state->getValue('default_include')) {
@@ -140,6 +161,11 @@ function _jsonapi_defaults_convert_rawvalue($raw_value) {
         $key = explode('][', $key);
         $value['filter:' . trim(implode('#', $key), '[]')] = $val;
       }
+      elseif (preg_match('/^sort.+/', $key)){
+        $key = str_replace('sort[', '', $key);
+        $key = explode('][', $key);
+        $value['sort:' . trim(implode('#', $key), '[]')] = $val;
+      }
 
     }
   }
@@ -165,6 +191,10 @@ function _jsonapi_defaults_convert_value($value) {
       elseif (preg_match('/^filter.+/', $key)) {
         $key = implode('][', explode('#', preg_replace('/^filter:/', '', $key)));
         $raw_value .= "filter[$key]=$val\n";
+      }
+      elseif (preg_match('/^sort.+/', $key)) {
+        $key = implode('][', explode('#', preg_replace('/^sort:/', '', $key)));
+        $raw_value .= "sort[$key]=$val\n";
       }
     }
   }

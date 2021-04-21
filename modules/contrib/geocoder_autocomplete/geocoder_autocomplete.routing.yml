@@ -1,0 +1,7 @@
+geocoder_autocomplete.autocomplete:
+  path: /geocoder/autocomplete
+  defaults:
+    _controller: '\Drupal\geocoder_autocomplete\Controller\GeocoderController::geocoderAutocomplete'
+
+  requirements:
+    _permission: 'access geocoder autocomplete'
