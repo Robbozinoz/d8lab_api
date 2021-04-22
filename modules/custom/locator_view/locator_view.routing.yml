@@ -1,0 +1,15 @@
+locator_view.locator_controller_content:
+  path: '/store-locator/content'
+  defaults:
+    _controller: '\Drupal\locator_view\Controller\LocatorController::content'
+    _title: 'Store Locator Content for View'
+  requirements:
+    _permission: 'access content'
+
+locator_view.origin_location:
+  path: '/origin_location'
+  defaults:
+    _form:  '\Drupal\locator_view\Form\LocatorForm'
+    _title: 'Store Locator Form for View'
+  requirements:
+    _access: 'TRUE'

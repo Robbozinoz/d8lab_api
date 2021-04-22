@@ -1,16 +1,18 @@
 <?php
-
+/**
+ * @file
+ * Contains \Drupal\resume\Form\OriginLocationForm
+ */
 namespace Drupal\th_store_locator\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Form\ConfigFormBase;
-use Drupal\Core\Database\Database;
-use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-
-use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\HtmlCommand;
+// use Drupal\Core\Ajax\AjaxResponse;
+// use Drupal\Core\Ajax\HtmlCommand;
+// use Drupal\Core\Form\ConfigFormBase;
+// use Drupal\Core\Database\Database;
+use Drupal\Core\Url;
 
 
 /**
@@ -18,22 +20,18 @@ use Drupal\Core\Ajax\HtmlCommand;
  *
  * @package Drupal\th_store_locator\Form
  */
-class OriginLocationForm extends FormBase
-{
-    /**
+class OriginLocationForm extends FormBase {
+   /**
    * {@inheritdoc}
    */
-    public function getFormId()
-    {
+    public function getFormId() {
         return 'origin_location_form';
     }
 
-    /**
+   /**
    * {@inheritdoc}
    */
-
-    public function buildForm(array $form, FormStateInterface $form_state)
-    {
+    public function buildForm(array $form, FormStateInterface $form_state) {
         /**
          * Custom form.
          */
@@ -56,20 +54,30 @@ class OriginLocationForm extends FormBase
         return $form;
     }
 
-    public function submitForm(array &$form, FormStateInterface $form_state)
-    {
+   /**
+   * {@inheritdoc}
+   */
+    public function submitForm(array &$form, FormStateInterface $form_state) {
         $origin_location = $form_state->getValue('origin_location');
         // You need the have Devel module enabled for dpm() to work.
-        // $origin_location = $form_state['values']['origin_location'];
         $origin_location = trim($origin_location);
         $origin_location = str_replace(' ', '+' , $origin_location);
         // dpm($origin_location);
-        $loc = "https://" . $_SERVER['SERVER_NAME'] . "/store-locator?";
-        $loc .= "field_geofield_distance[distance]=20&field_geofield_distance[unit]=6371&field_geofield_distance[origin]=" . $origin_location. "&tid[]=16&tid[]=17&tid[]=18";
-        //redirect
-        dpm("Location: $loc");
+        $loc = "https://".$_SERVER['SERVER_NAME']."/store-locator?";
+        //$loc .= "field_geofield_distance[distance]=20&field_geofield_distance[unit]=6371&field_geofield_distance[origin]=". $origin_location ."&tid[]=16&tid[]=17&tid[]=18";
+        $loc .= "field_geofield_distance[value]=5&field_geofield_distance[source_configuration][origin_address]=". $origin_location ."+AU,Australia&tid[]=16&tid[]=17&tid[]=18";
+        //dpm("Location: $loc");
         // drupal_goto($loc);
-        // return new RedirectResponse(\Drupal::url($loc, [], ['absolute' => TRUE]));
+        $url = Url::fromRoute(
+            $loc, 
+            [
+              'absolute' => TRUE,
+              'attributes' => [
+                'target' => '_blank',
+              ],
+            ]
+          )->toString();
+        dpm($loc);
         return new RedirectResponse($loc);
     }
 }

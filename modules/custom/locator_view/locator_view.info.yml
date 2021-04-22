@@ -1,0 +1,10 @@
+name: locator_view
+type: module
+version: 1.0
+description: Creates a block with dummy form for the store locator at the top bar
+package: The Hub CMS
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - views
+  - taxonomy
