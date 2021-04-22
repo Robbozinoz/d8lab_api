@@ -58,17 +58,16 @@ class OriginLocationForm extends FormBase {
    * {@inheritdoc}
    */
     public function submitForm(array &$form, FormStateInterface $form_state) {
+        //Get the value from the origin_location form
         $origin_location = $form_state->getValue('origin_location');
-        // You need the have Devel module enabled for dpm() to work.
+        //Strip the value entered
         $origin_location = trim($origin_location);
         $origin_location = str_replace(' ', '+' , $origin_location);
-        // dpm($origin_location);
+        //Rebuild the url for the view
         $loc = "https://".$_SERVER['SERVER_NAME']."/store-locator?";
-        //$loc .= "field_geofield_distance[distance]=20&field_geofield_distance[unit]=6371&field_geofield_distance[origin]=". $origin_location ."&tid[]=16&tid[]=17&tid[]=18";
-        $loc .= "field_geofield_distance[value]=5&field_geofield_distance[source_configuration][origin_address]=". $origin_location ."+AU,Australia&tid[]=16&tid[]=17&tid[]=18";
-        //dpm("Location: $loc");
-        // drupal_goto($loc);
-        $url = Url::fromRoute(
+        $loc .= "field_geofield_distance[value]=20&field_geofield_distance[source_configuration][origin_address]=". $origin_location ."+AU,Australia&tid[]=16&tid[]=17&tid[]=18";
+        ////Variable for the redirect response method
+        $url = Url::fromUri(
             $loc, 
             [
               'absolute' => TRUE,
@@ -76,8 +75,10 @@ class OriginLocationForm extends FormBase {
                 'target' => '_blank',
               ],
             ]
-          )->toString();
-        dpm($loc);
-        return new RedirectResponse($loc);
+        )->toString();
+        //You need the have Devel module enabled for dpm() to work.
+        //Testing dpm($url);
+        $response = new RedirectResponse($url);
+        $response->send();
     }
 }
