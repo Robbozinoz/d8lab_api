@@ -1,8 +1,7 @@
 name: Bootstrap4
 type: theme
 description: 'Theme with Bootstrap 4 css library'
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8.8 || ^9
 base theme: classy
 
 ckeditor_stylesheets:
@@ -11,6 +10,9 @@ ckeditor_stylesheets:
 libraries:
   - bootstrap4/bootstrap4-js-latest
   - bootstrap4/global-styling
+
+stylesheets-remove:
+  - '@classy/css/components/tabs.css'
 
 regions:
   header: Header
@@ -23,7 +25,7 @@ regions:
   sidebar_second: 'Sidebar second'
   footer: Footer
 
-# Information added by Drupal.org packaging script on 2021-03-31
-version: '2.1.6'
+# Information added by Drupal.org packaging script on 2021-04-28
+version: '2.1.7'
 project: 'bootstrap4'
-datestamp: 1617203712
+datestamp: 1619627726

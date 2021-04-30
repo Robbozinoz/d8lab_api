@@ -8,6 +8,8 @@
 * Rename `SUBTHEME` instances to your theme, e.g.  if your theme called `b4theme`:
   * Rename `SUBTHEME.info` to `b4theme.info.yml` and its content
   * Rename `SUBTHEME.libraries.yml` to `b4theme.libraries.yml`
+  * Rename `SUBTHEME.breakpoints.yml` to `b4theme.breakpoints.yml`
+    * Change all occurrences of `SUBTHEME` to `b4theme` in `b4theme.breakpoints.yml` (naming and groups).
   * Rename `SUBTHEME.theme` to `b4theme.theme` and its comments
 * Update import path in `SUBTHEME/scss/style.scss` to Bootstrap 4 theme path 
     `@import "[DOCROOT]/themes/contrib/bootstrap4/scss/style";`, 
@@ -17,8 +19,8 @@
 
 ### Customisations
 
-To customise look and feel of subtheme override SCSS variables. Full list of variables is in `[path to themes/contrib]/bootstrap4/dist/bootstrap/4.4.1/scss/_variables.scss` or `[path to themes/contrib]/bootstrap4/scss/_theme_variables.scss`.
-* Bootstrap 4 variables for font-face, font-sizes, colours, etc [Read more](https://getbootstrap.com/docs/4.5/getting-started/theming/#variable-defaults)
+To customise look and feel of subtheme override SCSS variables. Full list of variables is in `[path to themes/contrib]/bootstrap4/dist/bootstrap/4.6.0/scss/_variables.scss` or `[path to themes/contrib]/bootstrap4/scss/_theme_variables.scss`.
+* Bootstrap 4 variables for font-face, font-sizes, colours, etc [Read more](https://getbootstrap.com/docs/4.6/getting-started/theming/#variable-defaults)
 * Bootstrap 4 Theme specific variables `scss/_theme_variables.scss` for site logo image size, region paddings, etc
 
 To review changes to Bootstrap 4 subtheme easily load style guide page. The link will be available on `Manage theme` configuration page. Style guide is particular useful for accessibility testing (contrasts of background colours to text colours).

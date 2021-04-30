@@ -7,7 +7,7 @@ base theme: bootstrap4
 
 # Stylesheets.
 stylesheets-remove:
-  - '@bootstrap4/css/styles.css'
+  - '@bootstrap4/css/style.css'
 
 # Libraries.
 libraries:
