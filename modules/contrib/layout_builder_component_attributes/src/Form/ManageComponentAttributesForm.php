@@ -174,22 +174,22 @@ class ManageComponentAttributesForm extends FormBase {
       ];
       if ($config['allowed_block_attributes']['id']) {
         $form['block_attributes']['id'] = $form_partial_id + [
-          '#default_value' => ($component_attributes['block_attributes']['id']) ? $component_attributes['block_attributes']['id'] : '',
+          '#default_value' => $component_attributes['block_attributes']['id'] ?? '',
         ];
       }
       if ($config['allowed_block_attributes']['class']) {
         $form['block_attributes']['class'] = $form_partial_class + [
-          '#default_value' => ($component_attributes['block_attributes']['class']) ? $component_attributes['block_attributes']['class'] : '',
+          '#default_value' => $component_attributes['block_attributes']['class'] ?? '',
         ];
       }
       if ($config['allowed_block_attributes']['style']) {
         $form['block_attributes']['style'] = $form_partial_style + [
-          '#default_value' => ($component_attributes['block_attributes']['style']) ? $component_attributes['block_attributes']['style'] : '',
+          '#default_value' => $component_attributes['block_attributes']['style'] ?? '',
         ];
       }
       if ($config['allowed_block_attributes']['data']) {
         $form['block_attributes']['data'] = $form_partial_data + [
-          '#default_value' => ($component_attributes['block_attributes']['data']) ? $component_attributes['block_attributes']['data'] : '',
+          '#default_value' => $component_attributes['block_attributes']['data'] ?? '',
         ];
       }
     }
@@ -204,22 +204,22 @@ class ManageComponentAttributesForm extends FormBase {
       ];
       if ($config['allowed_block_title_attributes']['id']) {
         $form['block_title_attributes']['id'] = $form_partial_id + [
-          '#default_value' => ($component_attributes['block_title_attributes']['id']) ? $component_attributes['block_title_attributes']['id'] : '',
+          '#default_value' => $component_attributes['block_title_attributes']['id'] ?? '',
         ];
       }
       if ($config['allowed_block_title_attributes']['class']) {
         $form['block_title_attributes']['class'] = $form_partial_class + [
-          '#default_value' => ($component_attributes['block_title_attributes']['class']) ? $component_attributes['block_title_attributes']['class'] : '',
+          '#default_value' => $component_attributes['block_title_attributes']['class'] ?? '',
         ];
       }
       if ($config['allowed_block_title_attributes']['style']) {
         $form['block_title_attributes']['style'] = $form_partial_style + [
-          '#default_value' => ($component_attributes['block_title_attributes']['style']) ? $component_attributes['block_title_attributes']['style'] : '',
+          '#default_value' => $component_attributes['block_title_attributes']['style'] ?? '',
         ];
       }
       if ($config['allowed_block_title_attributes']['data']) {
         $form['block_title_attributes']['data'] = $form_partial_data + [
-          '#default_value' => ($component_attributes['block_title_attributes']['data']) ? $component_attributes['block_title_attributes']['data'] : '',
+          '#default_value' => $component_attributes['block_title_attributes']['data'] ?? '',
         ];
       }
     }
@@ -234,22 +234,22 @@ class ManageComponentAttributesForm extends FormBase {
       ];
       if ($config['allowed_block_content_attributes']['id']) {
         $form['block_content_attributes']['id'] = $form_partial_id + [
-          '#default_value' => ($component_attributes['block_content_attributes']['id']) ? $component_attributes['block_content_attributes']['id'] : '',
+          '#default_value' => $component_attributes['block_content_attributes']['id'] ?? '',
         ];
       }
       if ($config['allowed_block_content_attributes']['class']) {
         $form['block_content_attributes']['class'] = $form_partial_class + [
-          '#default_value' => ($component_attributes['block_content_attributes']['class']) ? $component_attributes['block_content_attributes']['class'] : '',
+          '#default_value' => $component_attributes['block_content_attributes']['class'] ?? '',
         ];
       }
       if ($config['allowed_block_content_attributes']['style']) {
         $form['block_content_attributes']['style'] = $form_partial_style + [
-          '#default_value' => ($component_attributes['block_content_attributes']['style']) ? $component_attributes['block_content_attributes']['style'] : '',
+          '#default_value' => $component_attributes['block_content_attributes']['style'] ?? '',
         ];
       }
       if ($config['allowed_block_content_attributes']['data']) {
         $form['block_content_attributes']['data'] = $form_partial_data + [
-          '#default_value' => ($component_attributes['block_content_attributes']['data']) ? $component_attributes['block_content_attributes']['data'] : '',
+          '#default_value' => $component_attributes['block_content_attributes']['data'] ?? '',
         ];
       }
     }
