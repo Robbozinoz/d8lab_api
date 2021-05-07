@@ -1,5 +1,40 @@
 (function ($, Drupal) {
   'use strict';
+
+  // //////////////////////////////////////////////////////////////////////////////
+  // [ STORE LOCATOR DIRECTION BUTTON ]
+  $(() => {
+    let addrHnd='';
+
+    let processStr = (str,link) => {
+    //function processStr(str,link) {
+        str = str.trim(str);
+        str = str.replace(/ /gi,"+");
+        if (link=="") {
+          link = str;
+        }
+        else{
+          link += "+" + str;
+        }
+        return link;
+    }
+
+    $('.view-duplicate-of-milk-finder-th-locator .views-field-field-milk-address').each(function(){
+       addrHnd = $(this);
+       console.log(this);
+       let link="";
+       link = processStr(addrHnd.find('.address-line1').text(),link);
+       link = processStr(addrHnd.find('.premise').text(),link);
+       link = processStr(addrHnd.find('.locality').text(),link);
+       link = processStr(', '+addrHnd.find('.administrative-area').text(),link);
+       link = processStr(', '+addrHnd.find('.postal-code').text(),link);
+       link = processStr(', '+addrHnd.find('.country').text(),link);
+       
+       link = "http://maps.google.com/?q=" + link;
+       addrHnd.append("<a target='_blank' class='btn btn-info get_dir' href=" + link + ">Directions</a>");
+    });
+  });
+
   // //////////////////////////////////////////////////////////////////////////////
   // [ DROPDOWN LANGUAGE MENU MOBILE ]
   $(() => {
