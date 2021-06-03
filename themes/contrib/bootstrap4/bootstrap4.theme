@@ -397,3 +397,33 @@ function bootstrap4_preprocess_html(&$variables) {
   $variables['b4_body_schema'] = theme_get_setting('b4_body_schema');
   $variables['b4_body_bg_schema'] = theme_get_setting('b4_body_bg_schema');
 }
+
+/**
+ * Implements theme_preprocess_table().
+ */
+function bootstrap4_preprocess_table(&$variables) {
+  $variables['attributes']['class'][] = 'table';
+  $variables['attributes']['class'][] = 'table-striped';
+  $variables['attributes']['class'][] = 'table-hover';
+}
+
+/**
+ * Implements theme_preprocess_views_ui_views_listing_table().
+ */
+function bootstrap4_preprocess_views_ui_views_listing_table(&$variables) {
+  bootstrap4_preprocess_table($variables);
+}
+
+/**
+ * Implements theme_preprocess_views_ui_display_tab_setting().
+ */
+function bootstrap4_preprocess_views_ui_display_tab_setting(&$variables) {
+  $variables['attributes']['class'][] = 'my-1';
+}
+
+/**
+ * Implements theme_preprocess_views_ui_display_tab_bucket().
+ */
+function bootstrap4_preprocess_views_ui_display_tab_bucket(&$variables) {
+  $variables['attributes']['class'][] = 'my-2';
+}

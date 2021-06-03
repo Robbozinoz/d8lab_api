@@ -1,0 +1,13 @@
+name: 'Geolocation Google Maps Test'
+type: module
+description: 'Test the geocoding functionality'
+package: Testing
+dependencies:
+  - geolocation:geolocation
+hidden: true
+core_version_requirement: ^8.7.7 || ^9
+
+# Information added by Drupal.org packaging script on 2021-05-26
+version: '8.x-3.6'
+project: 'geolocation'
+datestamp: 1622022804
